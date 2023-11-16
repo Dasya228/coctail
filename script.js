@@ -11,7 +11,7 @@ const imgText = document.querySelector("#imgText")
 const test = document.querySelector("#test")
 const test1=document.querySelector("#test1")
 // const ingredientsText = document.querySelector("#ingredientsText")
-
+const res = document.querySelector(".res")
 
 const handleFunction = () => {
     fetch('https://www.thecocktaildb.com/api/json/v2/1/popular.php')
@@ -29,7 +29,10 @@ const handleFunction = () => {
 </div>
 </div>
 
+
+
 `
+
                 console.log(data)
             })
         })
@@ -51,8 +54,27 @@ searchBtn.addEventListener('click', () => {
             text.innerText = drink.strDrink
             category.innerText = drink.strCategory
             instruction.innerHTML=drink.strInstructions
+            res.innerHTML +=`
+            <div>
+<img src="https://www.thecocktaildb.com/images/ingredients/${drink.strIngredient1}.png"/>
+<p>${drink.strIngredient1}</p>
+</div>
+            <div>
+<img src="https://www.thecocktaildb.com/images/ingredients/${drink.strIngredient2}.png"/>
+<p>${drink.strIngredient2}</p>
+</div>
+            <div>
+<img src="https://www.thecocktaildb.com/images/ingredients/${drink.strIngredient3}.png"/>
+<p>${drink.strIngredient3}</p>
+</div>
+            <div>
+<img src="https://www.thecocktaildb.com/images/ingredients/${drink.strIngredient4}.png"/>
+<p>${drink.strIngredient4}</p>
+</div>
+`
 
         })
+
 
     //
     //
@@ -71,6 +93,7 @@ searchBtn.addEventListener('click', () => {
     //         break
     //     }
     // }
+
 })
 
 all.addEventListener('change', () => {
